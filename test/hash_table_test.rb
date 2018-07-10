@@ -36,4 +36,15 @@ class HashTableTest < Minitest::Test
     assert_equal ([678]), hash_table.table[8].data.keys
     assert_equal ([658]), hash_table.table[8].child.data.keys
   end
+
+  def test_it_can_get_value
+    hash_table = HashTable.new()
+    hash_table.put(678, "Adam is great")
+    hash_table.put(658, "Adam is not great")
+    hash_table.put(674, "Adam is great")
+
+    assert_equal ("Adam is great"), hash_table.get(678)
+    assert_equal ("Adam is not great"), hash_table.get(658)
+    assert_equal ("Adam is great"), hash_table.get(674)
+  end
 end
